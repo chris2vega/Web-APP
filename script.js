@@ -24,17 +24,19 @@ async function getAllRecords() {
       let newHtml = "";
 
       for (let i = 0; i < data.records.length; i++) {
-        let logo = data.records[i].fields["Logo"]; // here we are getting column values
+        let logo = data.records[i].fields["Image"]; // here we are getting column values
         let name = data.records[i].fields[""]; //here we are using the Field ID to fecth the name property
         let neighborhood = data.records[i].fields["Neighborhood"];
 
         newHtml += `
         
          <<div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+         ${ 
+            `<img src="${logo[0].url}" class="card-img-top" alt="...">`
+         }
             <div class="card-body">
                 <h5 class="card-title">${name}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
