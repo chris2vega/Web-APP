@@ -25,19 +25,22 @@ async function getAllRecords() {
 
       for (let i = 0; i < data.records.length; i++) {
         let logo = data.records[i].fields["Image"]; // here we are getting column values
-        let name = data.records[i].fields[""]; //here we are using the Field ID to fecth the name property
+        let name = data.records[i].fields["Artist"]; //here we are using the Field ID to fecth the name property
         let neighborhood = data.records[i].fields["Neighborhood"];
 
         newHtml += `
         
-         <<div class="card" style="width: 18rem;">
-         ${ 
-            `<img src="${logo[0].url}" class="card-img-top" alt="...">`
-         }
+         <div class="card" style="width: 18rem;">
+         <a href="breweries.html?id=${data.records[i].id}">${
+          logo
+            ? `<img class="card-img-top rounded" alt="${name}" src="${logo[0].url}">`
+            : ``
+        }
+          </a>
             <div class="card-body">
                 <h5 class="card-title">${name}</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="index.html?id=${data.records[i].id }" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
                 
@@ -49,4 +52,12 @@ async function getAllRecords() {
     });
     
 }
+
+
 getAllRecords(); 
+let idParams = window.location.search.split("?id=");
+if (idParams.length >= 2) {
+  getOneRecord(idParams[1]); 
+} else {
+  getAllRecords(); 
+}
