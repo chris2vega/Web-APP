@@ -1,0 +1,7 @@
+#concerts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* optional spacing between cards */
+  padding: 20px;
+}

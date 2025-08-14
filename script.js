@@ -24,7 +24,7 @@ async function getAllRecords() {
       let newHtml = "";
 
       for (let i = 0; i < data.records.length; i++) {
-        let logo = data.records[i].fields["Image"]; // here we are getting column values
+        let logo = data.records[i].fields["Artistimage"]; // here we are getting column values
         let name = data.records[i].fields["Artist"]; //here we are using the Field ID to fecth the name property
         let neighborhood = data.records[i].fields["Neighborhood"];
 
